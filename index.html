@@ -82,636 +82,100 @@
       --nav-link-hover: #FF6A00;
     }
 
-    h1, .tech-heading {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-    }
+    h1, .tech-heading { font-family: 'Orbitron', sans-serif; font-weight: 700; }
+    h2, h3 { font-family: 'Roboto', sans-serif; font-weight: 700; color: var(--azul-royal); transition: color var(--transition-speed); }
+    h2 { font-size: 2rem; margin-bottom: 1rem; letter-spacing: -0.5px; }
+    h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--texto-principal); }
+    .subtitulo { font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 1.25rem; color: var(--cinza-medio); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
-    h2, h3 {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 700;
-      color: var(--azul-royal);
-      transition: color var(--transition-speed);
-    }
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; width: 100%; background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--borda); z-index: 1000; padding: 0.8rem 0; }
+    .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .logo { font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--azul-royal); text-decoration: none; letter-spacing: 1px; }
+    .logo span { color: var(--abobora); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--nav-link-color); text-decoration: none; font-weight: 500; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--nav-link-hover); transition: width 0.3s; }
+    .nav-links a:hover { color: var(--nav-link-hover); }
+    .nav-links a:hover::after { width: 100%; }
+    .header-actions { display: flex; align-items: center; gap: 1.2rem; }
+    .cta-header { background: var(--abobora); color: #fff; font-weight: 700; padding: 0.6rem 1.8rem; border-radius: 40px; text-decoration: none; border: 2px solid transparent; }
+    .cta-header:hover { background: transparent; color: var(--abobora); border-color: var(--abobora); }
+    .dark-toggle { background: transparent; border: 2px solid var(--borda); border-radius: 50%; width: 42px; height: 42px; cursor: pointer; font-size: 1.3rem; color: var(--texto-principal); }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
-
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-      color: var(--texto-principal);
-    }
-
-    .subtitulo {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      font-size: 1.25rem;
-      color: var(--cinza-medio);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Header fixo translúcido */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--header-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--borda);
-      z-index: 1000;
-      transition: background var(--transition-speed), border-color var(--transition-speed);
-      padding: 0.8rem 0;
-    }
-
-    .header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: var(--azul-royal);
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: color var(--transition-speed);
-      white-space: nowrap;
-    }
-    .logo span {
-      color: var(--abobora);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: var(--nav-link-color);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--nav-link-hover);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover {
-      color: var(--nav-link-hover);
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    .cta-header {
-      background: var(--abobora);
-      color: #FFFFFF;
-      font-weight: 700;
-      padding: 0.6rem 1.8rem;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      transition: background var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
-      border: 2px solid transparent;
-      white-space: nowrap;
-    }
-    .cta-header:hover {
-      background: transparent;
-      color: var(--abobora);
-      border-color: var(--abobora);
-    }
-
-    .dark-toggle {
-      background: transparent;
-      border: 2px solid var(--borda);
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.3rem;
-      transition: background var(--transition-speed), border-color var(--transition-speed), transform var(--transition-speed);
-      color: var(--texto-principal);
-      line-height: 1;
-    }
-    .dark-toggle:hover {
-      background: var(--cinza-claro);
-      transform: rotate(15deg);
-    }
-
-    /* Hero com vídeo MP4 local + fallback imagem */
+    /* Hero com vídeo hospedado externamente */
     .hero {
-      position: relative;
-      height: 90vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-      /* Imagem de fallback (cityscape noturna) - só aparece se o vídeo falhar */
+      position: relative; height: 90vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; overflow: hidden;
+      /* fallback imagem */
       background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     }
-
     .hero-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      z-index: 0;
+      position: absolute; top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%; width: auto; height: auto;
+      transform: translate(-50%, -50%); object-fit: cover; z-index: 0;
     }
+    .hero-overlay { position: absolute; inset: 0; background: var(--bg-hero-overlay); z-index: 1; }
+    .hero .container { position: relative; z-index: 2; }
+    .hero h1 { font-size: 3.2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    .hero h1 span { color: var(--abobora); display: block; }
+    .hero .subtitulo { color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; }
+    .btn-primario { background: var(--abobora); color: white; padding: 0.9rem 2.2rem; border-radius: 40px; font-weight: 700; text-decoration: none; border: 2px solid var(--abobora); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-primario:hover { background: white; color: var(--abobora); }
+    .btn-secundario { background: transparent; color: #fff; padding: 0.9rem 2.2rem; border-radius: 40px; border: 2px solid #fff; font-weight: 700; text-decoration: none; }
+    .btn-secundario:hover { background: #fff; color: var(--azul-royal); }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: var(--bg-hero-overlay);
-      z-index: 1;
-      transition: background var(--transition-speed);
-    }
+    /* Seções (mantidas) */
+    .sobre { padding: 4rem 0; background: var(--bg-principal); }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .sobre-img-circle { width: 320px; height: 320px; border-radius: 50%; background-image: url('https://i.postimg.cc/bwjhH802/Captura-de-tela-2026-06-19-200135.png'); background-size: cover; background-position: center; border: 6px solid var(--abobora); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+    .destaque { color: var(--verde-bandeira); font-weight: 700; }
+    .badge { background: var(--verde-bandeira); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
 
-    .hero .container {
-      position: relative;
-      z-index: 2;
-    }
+    .solucoes { padding: 4rem 0; background: var(--bg-secundario); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .card { background: var(--card-bg); border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 10px 30px var(--card-shadow); border-top: 6px solid var(--azul-royal); }
+    .card.zacca-pro { border-top-color: var(--abobora); }
+    .card ul { list-style: none; }
+    .card ul li::before { content: "✓"; color: var(--verde-bandeira); font-weight: bold; margin-right: 0.5rem; }
+    .btn-card { background: var(--azul-royal); color: white; padding: 0.7rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; }
+    .btn-card:hover { background: var(--abobora); }
+    .card.zacca-pro .btn-card { background: var(--abobora); }
 
-    .hero h1 {
-      font-size: 3.2rem;
-      line-height: 1.2;
-      color: #FFFFFF;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      transition: color var(--transition-speed);
-    }
-    .hero h1 span {
-      color: var(--abobora);
-      display: block;
-    }
+    .processo { padding: 4rem 0; background: var(--bg-principal); }
+    .funnel { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+    .etapa { background: var(--etapa-bg); padding: 2rem 1.5rem; border-radius: 20px; text-align: center; flex: 1; min-width: 200px; max-width: 250px; }
+    .etapa-numero { background: var(--azul-royal); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; }
 
-    .hero .subtitulo {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: rgba(255,255,255,0.9);
-      font-weight: 400;
-    }
+    .diferenciais { padding: 4rem 0; background: var(--dif-bg); }
+    .grid-diferenciais { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .dif-item { text-align: center; }
 
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primario {
-      background: var(--abobora);
-      color: white;
-      padding: 0.9rem 2.2rem;
-      border-radius: 40px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: all var(--transition-speed);
-      border: 2px solid var(--abobora);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-    }
-    .btn-primario:hover {
-      background: white;
-      color: var(--abobora);
-    }
-    .dark-mode .btn-primario:hover {
-      background: transparent;
-      color: var(--abobora);
-    }
-    .btn-secundario {
-      background: transparent;
-      color: #FFFFFF;
-      padding: 0.9rem 2.2rem;
-      border-radius: 40px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1rem;
-      border: 2px solid #FFFFFF;
-      transition: all var(--transition-speed);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-    }
-    .btn-secundario:hover {
-      background: #FFFFFF;
-      color: var(--azul-royal);
-    }
-    .dark-mode .btn-secundario {
-      border-color: var(--btn-secundario-border);
-      color: var(--btn-secundario-texto);
-    }
-    .dark-mode .btn-secundario:hover {
-      background: var(--azul-royal);
-      color: white;
-    }
+    .cta-final { padding: 4rem 0; background: var(--azul-royal); color: white; text-align: center; }
+    .btn-diagnostico-final { background: var(--abobora); color: white; padding: 1rem 2.8rem; border-radius: 40px; text-decoration: none; font-weight: 700; border: 2px solid var(--abobora); }
+    .whatsapp-link { color: #25D366; font-weight: 600; }
 
-    /* Seção Sobre */
-    .sobre {
-      padding: 4rem 0;
-      background: var(--bg-principal);
-      transition: background var(--transition-speed);
-    }
-    .sobre-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .sobre-img-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .sobre-img-circle {
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background-image: url('https://i.postimg.cc/bwjhH802/Captura-de-tela-2026-06-19-200135.png');
-      background-size: cover;
-      background-position: center;
-      background-color: var(--sobre-img-bg);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-      border: 6px solid var(--abobora);
-      transition: all var(--transition-speed);
-    }
-    .sobre-texto h2 {
-      color: var(--texto-principal);
-    }
-    .destaque {
-      color: var(--verde-bandeira);
-      font-weight: 700;
-      transition: color var(--transition-speed);
-    }
-    .badge {
-      background: var(--verde-bandeira);
-      color: white;
-      font-weight: 600;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      display: inline-block;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      transition: background var(--transition-speed);
-    }
-
-    /* Soluções */
-    .solucoes {
-      padding: 4rem 0;
-      background: var(--bg-secundario);
-      transition: background var(--transition-speed);
-    }
-    .solucoes h2 {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-    .solucoes .subtitulo {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 10px 30px var(--card-shadow);
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed), background var(--transition-speed);
-      border-top: 6px solid var(--azul-royal);
-      position: relative;
-      color: var(--texto-principal);
-    }
-    .card.zacca-pro {
-      border-top-color: var(--abobora);
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px var(--card-hover-shadow);
-    }
-    .card .icone {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .card h3 {
-      font-size: 1.8rem;
-      color: var(--texto-principal);
-    }
-    .card p {
-      color: var(--texto-secundario);
-      margin-bottom: 1.5rem;
-    }
-    .card ul {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
-    .card ul li {
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      color: var(--texto-secundario);
-    }
-    .card ul li::before {
-      content: "✓";
-      color: var(--verde-bandeira);
-      font-weight: bold;
-    }
-    .card .btn-card {
-      display: inline-block;
-      background: var(--azul-royal);
-      color: white;
-      padding: 0.7rem 1.8rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background var(--transition-speed);
-      white-space: nowrap;
-    }
-    .card .btn-card:hover {
-      background: var(--abobora);
-    }
-    .card.zacca-pro .btn-card {
-      background: var(--abobora);
-    }
-    .card.zacca-pro .btn-card:hover {
-      background: var(--azul-royal);
-    }
-
-    /* Processo / Funil */
-    .processo {
-      padding: 4rem 0;
-      background: var(--bg-principal);
-      transition: background var(--transition-speed);
-    }
-    .processo h2 {
-      text-align: center;
-    }
-    .funnel {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-    }
-    .etapa {
-      background: var(--etapa-bg);
-      padding: 2rem 1.5rem;
-      border-radius: 20px;
-      text-align: center;
-      flex: 1;
-      min-width: 200px;
-      max-width: 250px;
-      position: relative;
-      transition: background var(--transition-speed);
-    }
-    .etapa-numero {
-      background: var(--azul-royal);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin: 0 auto 1rem;
-      font-size: 1.2rem;
-      transition: background var(--transition-speed);
-    }
-    .etapa h4 {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--texto-principal);
-    }
-    .etapa p {
-      font-size: 0.95rem;
-      color: var(--texto-secundario);
-    }
-
-    /* Diferenciais */
-    .diferenciais {
-      padding: 4rem 0;
-      background: var(--dif-bg);
-      transition: background var(--transition-speed);
-    }
-    .grid-diferenciais {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .dif-item {
-      text-align: center;
-      padding: 1.5rem;
-    }
-    .dif-icone {
-      font-size: 2.5rem;
-      margin-bottom: 0.8rem;
-    }
-    .dif-item h5 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--texto-principal);
-    }
-    .dif-item p {
-      color: var(--texto-secundario);
-    }
-
-    /* CTA final */
-    .cta-final {
-      padding: 4rem 0;
-      background: var(--azul-royal);
-      color: white;
-      text-align: center;
-      transition: background var(--transition-speed);
-    }
-    .dark-mode .cta-final {
-      background: #1E3A8A;
-    }
-    .cta-final h2 {
-      color: white;
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .cta-final p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      color: #E2E8F0;
-    }
-    .btn-diagnostico-final {
-      background: var(--abobora);
-      color: white;
-      font-weight: 700;
-      padding: 1rem 2.8rem;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      display: inline-block;
-      transition: background 0.3s;
-      border: 2px solid var(--abobora);
-    }
-    .btn-diagnostico-final:hover {
-      background: transparent;
-      color: var(--abobora);
-      border-color: var(--abobora);
-    }
-    .whatsapp-link {
-      color: #25D366;
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-    /* Footer 3 colunas */
-    .footer {
-      background: var(--footer-bg);
-      color: var(--footer-texto);
-      padding: 3rem 0 1.5rem;
-      transition: background var(--transition-speed), color var(--transition-speed);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2rem;
-    }
-    .footer-col h4 {
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      color: #FFFFFF;
-      font-size: 1.1rem;
-      position: relative;
-    }
-    .footer-col h4::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 3px;
-      background: var(--abobora);
-      margin-top: 0.5rem;
-      border-radius: 2px;
-    }
-    .footer-col p, .footer-col a {
-      color: #CBD5E1;
-      text-decoration: none;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover {
-      color: var(--abobora);
-    }
-    .footer-col ul {
-      list-style: none;
-    }
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-    .footer-logo {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      font-size: 1.8rem;
-      color: #FFFFFF;
-      margin-bottom: 0.8rem;
-    }
-    .footer-logo span {
-      color: var(--abobora);
-    }
-    .footer-bottom {
-      border-top: 1px solid #2D3748;
-      padding-top: 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #94A3B8;
-    }
+    /* Footer */
+    .footer { background: var(--footer-bg); color: var(--footer-texto); padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
+    .footer-col h4 { color: white; margin-bottom: 1.2rem; position: relative; }
+    .footer-col h4::after { content: ''; display: block; width: 40px; height: 3px; background: var(--abobora); margin-top: 0.5rem; }
+    .footer-col a { color: #CBD5E1; text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--abobora); }
+    .footer-logo { font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 1.8rem; color: white; }
+    .footer-logo span { color: var(--abobora); }
+    .footer-bottom { border-top: 1px solid #2D3748; padding-top: 1.5rem; text-align: center; color: #94A3B8; }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      .hero {
-        height: auto;
-        min-height: 500px;
-        padding: 4rem 0;
-      }
-      .sobre-grid {
-        grid-template-columns: 1fr;
-      }
-      .sobre-img-circle {
-        width: 250px;
-        height: 250px;
-        margin: 0 auto;
-      }
-      .sobre-img-wrapper {
-        order: -1;
-      }
-      .funnel {
-        flex-direction: column;
-        align-items: center;
-      }
-      .etapa {
-        max-width: 100%;
-      }
-      .header .container {
-        flex-direction: column;
-      }
-      .nav-links {
-        justify-content: center;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+      .hero h1 { font-size: 2.3rem; }
+      .hero { height: auto; min-height: 500px; padding: 4rem 0; }
+      .sobre-grid { grid-template-columns: 1fr; }
+      .sobre-img-circle { width: 250px; height: 250px; margin: 0 auto; }
+      .funnel { flex-direction: column; align-items: center; }
+      .header .container { flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -730,63 +194,49 @@
       </nav>
       <div class="header-actions">
         <a href="https://wa.me/5519993869366?text=Olá%20Luiz,%20quero%20um%20diagnóstico%20grátis" class="cta-header" target="_blank">Diagnóstico Grátis</a>
-        <button class="dark-toggle" id="darkModeToggle" aria-label="Alternar modo escuro" title="Modo claro/escuro">🌙</button>
+        <button class="dark-toggle" id="darkModeToggle" title="Modo claro/escuro">🌙</button>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero com vídeo MP4 local -->
+    <!-- Hero com vídeo hospedado (substituir pela URL após upload) -->
     <section class="hero" id="inicio">
+      <!-- ⚠️ Substitua a URL abaixo pela gerada no Cloudinary (ou outra plataforma) -->
       <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
-        <source src="aerofighter-luizzacca-hero.mp4" type="video/mp4">
+        <source src="https://res.cloudinary.com/SEU_CLOUD_NAME/video/upload/v1/aerofighter-luizzacca-hero.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
       <div class="container">
-        <h1>
-          Luiz Zacca<br>
-          <span>Especialista em Prospecção Ativa no LinkedIn</span>
-        </h1>
-        <p class="subtitulo">
-          Automatize a captação de clientes B2B e monte um time comercial de alta performance com inteligência artificial e assessoria personalizada.
-        </p>
-        <div class="hero-buttons">
-          <a href="https://wa.me/5519993869366?text=Olá%20Luiz,%20quero%20um%20diagnóstico%20grátis" class="btn-primario" target="_blank">
-            <span>🚀</span> Diagnóstico Grátis
-          </a>
-          <a href="#solucoes" class="btn-secundario">
-            <span>📅</span> Ver Soluções
-          </a>
+        <h1>Luiz Zacca<br><span>Especialista em Prospecção Ativa no LinkedIn</span></h1>
+        <p class="subtitulo">Automatize a captação de clientes B2B e monte um time comercial de alta performance com inteligência artificial e assessoria personalizada.</p>
+        <div class="hero-buttons" style="display:flex; gap:1rem; justify-content:center;">
+          <a href="https://wa.me/5519993869366?text=Olá%20Luiz,%20quero%20um%20diagnóstico%20grátis" class="btn-primario" target="_blank">🚀 Diagnóstico Grátis</a>
+          <a href="#solucoes" class="btn-secundario">📅 Ver Soluções</a>
         </div>
       </div>
     </section>
 
     <section class="sobre" id="sobre">
       <div class="container sobre-grid">
-        <div class="sobre-img-wrapper">
-          <div class="sobre-img-circle" aria-label="Foto de Luiz Zacca"></div>
-        </div>
-        <div class="sobre-texto">
+        <div class="sobre-img-circle" aria-label="Foto de Luiz Zacca"></div>
+        <div>
           <span class="badge">+10 anos de experiência</span>
-          <h2>Quem é <span style="color: var(--abobora);">Luiz Zacca</span>?</h2>
-          <p>
-            Sou <strong>SDR Sênior</strong> e especialista em Outbound Marketing, com atuação de mais de uma década na INBOTIX Inteligência Comercial e parceria com a Veross. Construí minha carreira liderando estratégias comerciais, automatizando prospecção via <strong>LinkedIn, WhatsApp e Cold Mail</strong>.
-          </p>
-          <p>
-            Minha metodologia combina <span class="destaque">robôs inteligentes</span> e acompanhamento humano para entregar leads qualificados no perfil exato que seu negócio precisa – seja para vender mais ou para contratar o time ideal.
-          </p>
-          <p style="font-weight: 500;">⏱️ Resultado: mais clientes, menos tempo perdido.</p>
+          <h2>Quem é <span style="color:var(--abobora);">Luiz Zacca</span>?</h2>
+          <p>Sou <strong>SDR Sênior</strong> e especialista em Outbound Marketing, com mais de uma década na INBOTIX Inteligência Comercial e parceria com a Veross. Automatizo prospecção via <strong>LinkedIn, WhatsApp e Cold Mail</strong>.</p>
+          <p>Minha metodologia combina <span class="destaque">robôs inteligentes</span> e acompanhamento humano para leads qualificados no perfil exato.</p>
+          <p style="font-weight:500;">⏱️ Resultado: mais clientes, menos tempo perdido.</p>
         </div>
       </div>
     </section>
 
     <section class="solucoes" id="solucoes">
       <div class="container">
-        <h2>Soluções que aceleram seu crescimento</h2>
-        <p class="subtitulo">Escolha o caminho ideal para sua empresa: tecnologia autônoma ou assessoria completa.</p>
+        <h2 style="text-align:center;">Soluções que aceleram seu crescimento</h2>
+        <p class="subtitulo" style="text-align:center; margin-bottom:3rem;">Escolha o caminho ideal para sua empresa.</p>
         <div class="cards">
           <div class="card">
-            <div class="icone">🤖</div>
+            <div style="font-size:2.5rem;">🤖</div>
             <h3>Zacca Flow</h3>
             <p><strong>Plataforma de automação e IA no LinkedIn</strong></p>
             <ul>
@@ -799,7 +249,7 @@
             <a href="https://wa.me/5519993869366?text=Quero%20saber%20sobre%20Zacca%20Flow" class="btn-card" target="_blank">Diagnóstico Grátis</a>
           </div>
           <div class="card zacca-pro">
-            <div class="icone">🤝</div>
+            <div style="font-size:2.5rem;">🤝</div>
             <h3>Zacca Pro</h3>
             <p><strong>Assessoria personalizada em prospecção ativa</strong></p>
             <ul>
@@ -817,51 +267,23 @@
 
     <section class="processo" id="processo">
       <div class="container">
-        <h2>Do clique ao contrato: como funciona</h2>
+        <h2 style="text-align:center;">Do clique ao contrato: como funciona</h2>
         <div class="funnel">
-          <div class="etapa">
-            <div class="etapa-numero">1</div>
-            <h4>Definição do perfil</h4>
-            <p>Mapeamos o ICP ideal (setor, cargo, região) e os canais de abordagem.</p>
-          </div>
-          <div class="etapa">
-            <div class="etapa-numero">2</div>
-            <h4>Automação & Prospecção</h4>
-            <p>Robôs entram em ação no LinkedIn, e-mail e WhatsApp, gerando conversas qualificadas.</p>
-          </div>
-          <div class="etapa">
-            <div class="etapa-numero">3</div>
-            <h4>Captação & Fechamento</h4>
-            <p>Seu time (ou o nosso) recebe leads prontos para negociar, encurtando o ciclo de vendas.</p>
-          </div>
+          <div class="etapa"><div class="etapa-numero">1</div><h4>Definição do perfil</h4><p>Mapeamos o ICP ideal.</p></div>
+          <div class="etapa"><div class="etapa-numero">2</div><h4>Automação & Prospecção</h4><p>Robôs entram em ação.</p></div>
+          <div class="etapa"><div class="etapa-numero">3</div><h4>Captação & Fechamento</h4><p>Leads prontos para negociar.</p></div>
         </div>
       </div>
     </section>
 
     <section class="diferenciais">
       <div class="container">
-        <h2 style="text-align: center;">Por que escolher a metodologia Zacca?</h2>
+        <h2 style="text-align:center;">Por que escolher a metodologia Zacca?</h2>
         <div class="grid-diferenciais">
-          <div class="dif-item">
-            <div class="dif-icone">🎯</div>
-            <h5>Leads altamente qualificados</h5>
-            <p>Filtros inteligentes que entregam exatamente o perfil que você quer vender.</p>
-          </div>
-          <div class="dif-item">
-            <div class="dif-icone">⚡</div>
-            <h5>Economia de tempo</h5>
-            <p>Automatizamos até 80% das tarefas repetitivas de prospecção.</p>
-          </div>
-          <div class="dif-item">
-            <div class="dif-icone">📈</div>
-            <h5>Escalabilidade real</h5>
-            <p>Aumente o volume de abordagens sem aumentar o time proporcionalmente.</p>
-          </div>
-          <div class="dif-item">
-            <div class="dif-icone">🧠</div>
-            <h5>Equipe de alta performance</h5>
-            <p>No modelo Pro, treinamos e gerimos seu time comercial para resultados consistentes.</p>
-          </div>
+          <div class="dif-item"><div style="font-size:2.5rem;">🎯</div><h5>Leads qualificados</h5><p>Filtros inteligentes.</p></div>
+          <div class="dif-item"><div style="font-size:2.5rem;">⚡</div><h5>Economia de tempo</h5><p>80% de automação.</p></div>
+          <div class="dif-item"><div style="font-size:2.5rem;">📈</div><h5>Escalabilidade</h5><p>Mais volume, mesma equipe.</p></div>
+          <div class="dif-item"><div style="font-size:2.5rem;">🧠</div><h5>Equipe de alta performance</h5><p>Treinamento e gestão.</p></div>
         </div>
       </div>
     </section>
@@ -870,12 +292,8 @@
       <div class="container">
         <h2>Pronto para escalar seus resultados?</h2>
         <p>Solicite agora um diagnóstico gratuito e descubra como podemos transformar sua prospecção B2B.</p>
-        <a href="https://wa.me/5519993869366?text=Olá%20Luiz,%20quero%20meu%20diagnóstico%20grátis" class="btn-diagnostico-final" target="_blank">
-          🚀 Diagnóstico Grátis
-        </a>
-        <p style="margin-top: 1.2rem; font-size: 0.95rem;">
-          ou fale direto no <a href="https://wa.me/5519993869366" class="whatsapp-link" target="_blank">WhatsApp</a>
-        </p>
+        <a href="https://wa.me/5519993869366?text=Olá%20Luiz,%20quero%20meu%20diagnóstico%20grátis" class="btn-diagnostico-final" target="_blank">🚀 Diagnóstico Grátis</a>
+        <p style="margin-top:1.2rem; font-size:0.95rem;">ou fale direto no <a href="https://wa.me/5519993869366" class="whatsapp-link" target="_blank">WhatsApp</a></p>
       </div>
     </section>
   </main>
@@ -885,9 +303,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo">LZ<span>.</span>PRO</div>
-          <p>
-            Luiz Zacca é especialista em prospecção ativa e automação B2B. Transformamos conexões em contratos com inteligência artificial e estratégia personalizada.
-          </p>
+          <p>Luiz Zacca é especialista em prospecção ativa e automação B2B. Transformamos conexões em contratos com inteligência artificial e estratégia personalizada.</p>
         </div>
         <div class="footer-col">
           <h4>Navegação</h4>
@@ -903,25 +319,25 @@
           <h4>Contato</h4>
           <ul>
             <li><a href="https://wa.me/5519993869366" target="_blank">📱 WhatsApp</a></li>
-            <li><a href="mailto:luizzacca@gmail.com">✉️ Fale comigo no e-mail</a></li>
+            <li><a href="mailto:luizzacca59@gmail.com">✉️ E-mail do Zacca</a></li>
             <li><a href="https://www.linkedin.com/in/luiz-zacca-44155623b/" target="_blank">💼 LinkedIn</a></li>
             <li><a href="https://www.instagram.com/luizzaccasdr/" target="_blank">📷 Instagram</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Luiz Zacca · Todos os direitos reservados · Assessoria em Prospecção Ativa no LinkedIn</p>
+        <p>&copy; 2026 Luiz Zacca · Todos os direitos reservados</p>
       </div>
     </div>
   </footer>
 
-  <!-- Script apenas para dark mode (vídeo agora é estático, sem hls.js) -->
   <script>
+    // Dark mode toggle
     (function() {
       const body = document.body;
       const toggleBtn = document.getElementById('darkModeToggle');
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         body.classList.add('dark-mode');
         toggleBtn.innerHTML = '☀️';
       } else {
