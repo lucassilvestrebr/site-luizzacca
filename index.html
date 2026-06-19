@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Luiz Zacca | Especialista em Prospecção Ativa no LinkedIn</title>
-  <!-- Google Fonts: Orbitron (tech) + Roboto (professional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     * {
       margin: 0;
@@ -120,7 +120,7 @@
       padding: 0 1.5rem;
     }
 
-    /* Header / Navegação fixa translúcida */
+    /* Header fixo translúcido */
     .header {
       position: fixed;
       top: 0;
@@ -234,28 +234,47 @@
       transform: rotate(15deg);
     }
 
-    /* Hero Section com background cityscape */
+    /* Hero com vídeo (fallback imagem) */
     .hero {
       position: relative;
-      /* 👇 Substitua pela URL real do seu clipe/imagem de cityscape */
-      background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-      padding: 5rem 0 6rem;
+      height: 90vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: white;
-      transition: background var(--transition-speed);
+      overflow: hidden;
+      /* Imagem de fallback (cityscape noturna) */
+      background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     }
-    .hero::before {
-      content: '';
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
       position: absolute;
       inset: 0;
       background: var(--bg-hero-overlay);
       z-index: 1;
       transition: background var(--transition-speed);
     }
+
     .hero .container {
       position: relative;
       z-index: 2;
     }
+
     .hero h1 {
       font-size: 3.2rem;
       line-height: 1.2;
@@ -268,6 +287,7 @@
       color: var(--abobora);
       display: block;
     }
+
     .hero .subtitulo {
       font-size: 1.3rem;
       max-width: 700px;
@@ -275,6 +295,7 @@
       color: rgba(255,255,255,0.9);
       font-weight: 400;
     }
+
     .hero-buttons {
       display: flex;
       gap: 1rem;
@@ -344,7 +365,6 @@
       gap: 3rem;
       align-items: center;
     }
-    /* Foto circular do Luiz */
     .sobre-img-wrapper {
       display: flex;
       justify-content: center;
@@ -548,7 +568,7 @@
       color: var(--texto-secundario);
     }
 
-    /* Call to Action final */
+    /* CTA final */
     .cta-final {
       padding: 4rem 0;
       background: var(--azul-royal);
@@ -660,6 +680,11 @@
       .hero h1 {
         font-size: 2.3rem;
       }
+      .hero {
+        height: auto;
+        min-height: 500px;
+        padding: 4rem 0;
+      }
       .sobre-grid {
         grid-template-columns: 1fr;
       }
@@ -706,15 +731,16 @@
       </nav>
       <div class="header-actions">
         <a href="https://wa.me/5519993869366?text=Olá%20Luiz,%20quero%20um%20diagnóstico%20grátis" class="cta-header" target="_blank">Diagnóstico Grátis</a>
-        <button class="dark-toggle" id="darkModeToggle" aria-label="Alternar modo escuro" title="Modo claro/escuro">
-          🌙
-        </button>
+        <button class="dark-toggle" id="darkModeToggle" aria-label="Alternar modo escuro" title="Modo claro/escuro">🌙</button>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- Hero com vídeo HLS (fallback imagem no CSS) -->
     <section class="hero" id="inicio">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline></video>
+      <div class="hero-overlay"></div>
       <div class="container">
         <h1>
           Luiz Zacca<br>
@@ -758,7 +784,6 @@
         <h2>Soluções que aceleram seu crescimento</h2>
         <p class="subtitulo">Escolha o caminho ideal para sua empresa: tecnologia autônoma ou assessoria completa.</p>
         <div class="cards">
-          <!-- Zacca Flow -->
           <div class="card">
             <div class="icone">🤖</div>
             <h3>Zacca Flow</h3>
@@ -772,7 +797,6 @@
             </ul>
             <a href="https://wa.me/5519993869366?text=Quero%20saber%20sobre%20Zacca%20Flow" class="btn-card" target="_blank">Diagnóstico Grátis</a>
           </div>
-          <!-- Zacca Pro -->
           <div class="card zacca-pro">
             <div class="icone">🤝</div>
             <h3>Zacca Pro</h3>
@@ -892,9 +916,49 @@
 
   <script>
     (function() {
+      const video = document.getElementById('heroVideo');
+      const videoSrc = 'https://cms-public-artifacts.motionarray.com/content/motion-array/2959054/PRD-2959054-1RawlUc72En0KeQN-original_playlist_1730921946.m3u8';
+
+      function fallbackToImage() {
+        console.warn('⚠️ Vídeo HLS indisponível. Exibindo imagem de fundo padrão.');
+        // O CSS já garante a imagem de fundo
+      }
+
+      function attemptPlay() {
+        if (Hls.isSupported()) {
+          const hls = new Hls();
+          hls.loadSource(videoSrc);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            video.style.display = 'block';
+            video.play().catch(e => console.log('Autoplay bloqueado:', e));
+          });
+          hls.on(Hls.Events.ERROR, (event, data) => {
+            console.error('Erro HLS:', data.type, data.details);
+            if (data.fatal) {
+              fallbackToImage();
+              hls.destroy();
+            }
+          });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoSrc;
+          video.addEventListener('loadedmetadata', () => {
+            video.style.display = 'block';
+            video.play().catch(e => console.log('Autoplay bloqueado:', e));
+          });
+          video.addEventListener('error', () => fallbackToImage());
+        } else {
+          fallbackToImage();
+        }
+      }
+
+      // Inicializa vídeo escondido (o CSS mostrará a imagem de fundo)
+      video.style.display = 'none';
+      attemptPlay();
+
+      // Dark mode
       const body = document.body;
       const toggleBtn = document.getElementById('darkModeToggle');
-      
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         body.classList.add('dark-mode');
@@ -902,7 +966,6 @@
       } else {
         toggleBtn.innerHTML = '🌙';
       }
-
       toggleBtn.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
         const isDark = body.classList.contains('dark-mode');
