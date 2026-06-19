@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     * {
       margin: 0;
@@ -234,7 +233,7 @@
       transform: rotate(15deg);
     }
 
-    /* Hero com vídeo (fallback imagem) */
+    /* Hero com vídeo MP4 local + fallback imagem */
     .hero {
       position: relative;
       height: 90vh;
@@ -245,7 +244,7 @@
       text-align: center;
       color: white;
       overflow: hidden;
-      /* Imagem de fallback (cityscape noturna) */
+      /* Imagem de fallback (cityscape noturna) - só aparece se o vídeo falhar */
       background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     }
 
@@ -737,9 +736,11 @@
   </header>
 
   <main>
-    <!-- Hero com vídeo HLS (fallback imagem no CSS) -->
+    <!-- Hero com vídeo MP4 local -->
     <section class="hero" id="inicio">
-      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline></video>
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+        <source src="aerofighter-luizzacca-hero.mp4" type="video/mp4">
+      </video>
       <div class="hero-overlay"></div>
       <div class="container">
         <h1>
@@ -914,49 +915,9 @@
     </div>
   </footer>
 
+  <!-- Script apenas para dark mode (vídeo agora é estático, sem hls.js) -->
   <script>
     (function() {
-      const video = document.getElementById('heroVideo');
-      const videoSrc = 'https://cms-public-artifacts.motionarray.com/content/motion-array/2959054/PRD-2959054-1RawlUc72En0KeQN-original_playlist_1730921946.m3u8';
-
-      function fallbackToImage() {
-        console.warn('⚠️ Vídeo HLS indisponível. Exibindo imagem de fundo padrão.');
-        // O CSS já garante a imagem de fundo
-      }
-
-      function attemptPlay() {
-        if (Hls.isSupported()) {
-          const hls = new Hls();
-          hls.loadSource(videoSrc);
-          hls.attachMedia(video);
-          hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            video.style.display = 'block';
-            video.play().catch(e => console.log('Autoplay bloqueado:', e));
-          });
-          hls.on(Hls.Events.ERROR, (event, data) => {
-            console.error('Erro HLS:', data.type, data.details);
-            if (data.fatal) {
-              fallbackToImage();
-              hls.destroy();
-            }
-          });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = videoSrc;
-          video.addEventListener('loadedmetadata', () => {
-            video.style.display = 'block';
-            video.play().catch(e => console.log('Autoplay bloqueado:', e));
-          });
-          video.addEventListener('error', () => fallbackToImage());
-        } else {
-          fallbackToImage();
-        }
-      }
-
-      // Inicializa vídeo escondido (o CSS mostrará a imagem de fundo)
-      video.style.display = 'none';
-      attemptPlay();
-
-      // Dark mode
       const body = document.body;
       const toggleBtn = document.getElementById('darkModeToggle');
       const savedTheme = localStorage.getItem('theme');
